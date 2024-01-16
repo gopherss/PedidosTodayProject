@@ -57,7 +57,7 @@ const MongoDBState = props => {
         try {
             const URL = 'https://restaurante.fly.dev/obtener-categoria',
                 response = await axios.get(URL),
-                categorias = response.data;
+                categorias = await response.data;
 
                 dispatch({
                     type: OBTENER_CATEGORIAS_EXITO,

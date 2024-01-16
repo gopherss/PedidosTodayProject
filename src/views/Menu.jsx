@@ -22,10 +22,11 @@ const Menu = () => {
     const { menu, obtenerProductos, isLoading } = useContext(MongoDBContext);
     const { categoria, obtenerCategorias } = useContext(MongoDBContext);
 
-  
-    const [refreshing, setRefreshing] = useState(false);
 
+    const [refreshing, setRefreshing] = useState(false);
     const [search, setSearch] = useState('');
+    const [miCategoria, setMiCategoria] = useState('')
+
 
     useEffect(() => {
         obtenerProductos();
@@ -66,6 +67,20 @@ const Menu = () => {
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         style={{ marginVertical: 2 }}>
+
+                        <Button
+                            size="md"
+                            radius={'md'}
+                            style={{ marginHorizontal: 2, marginVertical: 4 }}
+                            ViewComponent={LinearGradient} // Don't forget this!
+                            linearGradientProps={{
+                                colors: ["#FF9800", "#F44336"],
+                                start: { x: 0, y: 0.5 },
+                                end: { x: 1, y: 0.5 },
+                            }}
+                            onPress={_ => { setSearch(''); setMiCategoria('') }}>
+                            Todo
+                        </Button>
                         {
                             categoria.map(({ _id, nombre }) =>
                             (
@@ -80,6 +95,7 @@ const Menu = () => {
                                         start: { x: 0, y: 0.5 },
                                         end: { x: 1, y: 0.5 },
                                     }}
+                                    onPress={_ => { setSearch(''); setMiCategoria(nombre) }}
                                 >
                                     {nombre}
                                 </Button>
@@ -99,11 +115,15 @@ const Menu = () => {
                     ) : (
                         <FlatList
                             style={styles.list}
-                            data={menu.filter(
-                                platillo => 
-                                    platillo.nombre.toLowerCase().includes(search.toLocaleLowerCase()) ||
-                                    platillo.descripcion.toLocaleLowerCase().includes(search.toLocaleLowerCase())
-                            )}
+                            data={
+                                search.length < 1 ?
+                                    menu.filter(platillo =>
+                                        platillo.categoria.toLowerCase().includes(miCategoria.toLocaleLowerCase())
+                                    )
+                                    : menu.filter(platillo =>
+                                        platillo.nombre.toLowerCase().includes(search.toLocaleLowerCase()) ||
+                                        platillo.descripcion.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+                                    )}
                             ListEmptyComponent={renderizarListaVacia}
                             initialNumToRender={7}
                             numColumns={2}
@@ -143,7 +163,7 @@ const styles = StyleSheet.create({
         color: '#e53935',
         textAlign: 'center'
     },
-    list:{
+    list: {
         marginBottom: 120
     }
 });

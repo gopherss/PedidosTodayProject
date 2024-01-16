@@ -12,7 +12,7 @@ import ResumenPedido from './src/views/ResumenPedido';
 
 //Components
 import BotonResumen from './src/components/interface/BotonResumen';
-import BotonComprar from './src/components/interface/BotonComprar';
+import BotonComprar from './src/components/interface/BotonAgregar';
 
 
 //Importar Context
@@ -53,8 +53,7 @@ const App = () => {
                 name='Menu'
                 component={Menu}
                 options={{
-                  title: 'Elige tu Platillo',
-                  headerRight: props => <BotonResumen />
+                  title: 'Elige tu Platillo'
                 }}
               />
               <Stack.Screen
@@ -69,8 +68,7 @@ const App = () => {
                 name='ResumenPedido'
                 component={ResumenPedido}
                 options={{
-                  title: 'Resumen Pedido',
-                  headerRight: props => <BotonComprar />
+                  title: 'Resumen Pedido'
                 }}
               />
               <Stack.Screen

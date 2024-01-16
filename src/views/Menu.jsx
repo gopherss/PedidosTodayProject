@@ -16,6 +16,7 @@ import globalStyles from '../styles/global';
 //Context
 import MongoDBContext from '../context/database/mongoDBContext';
 import ProductoItem from '../components/interface/ProductoItem';
+import BotonResumen from '../components/interface/BotonResumen';
 
 const Menu = () => {
 
@@ -25,7 +26,7 @@ const Menu = () => {
 
     const [refreshing, setRefreshing] = useState(false);
     const [search, setSearch] = useState('');
-    const [miCategoria, setMiCategoria] = useState('')
+    const [miCategoria, setMiCategoria] = useState('');
 
 
     useEffect(() => {
@@ -125,7 +126,7 @@ const Menu = () => {
                                         platillo.descripcion.toLocaleLowerCase().includes(search.toLocaleLowerCase())
                                     )}
                             ListEmptyComponent={renderizarListaVacia}
-                            initialNumToRender={7}
+                            initialNumToRender={4}
                             numColumns={2}
                             showsVerticalScrollIndicator={false}
                             renderItem={({ item }) => <ProductoItem producto={item} />}
@@ -139,6 +140,7 @@ const Menu = () => {
                     )}
                 </View>
 
+                <BotonResumen/>
             </View>
         </>
     );

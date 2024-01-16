@@ -9,6 +9,7 @@ import globalStyles from '../styles/global';
 //Contexto
 import PedidoContext from '../context/pedidos/pedidosContext';
 import MongoDBContext from '../context/database/mongoDBContext';
+import BotonComprar from '../components/interface/BotonAgregar';
 
 const ResumenPedido = (_) => {
 
@@ -69,7 +70,7 @@ const ResumenPedido = (_) => {
                             total: Number(total),
                             orden: pedido,
                         }
-                        
+
                         let id = await guardarPedido(pedidoObj);
                         pedidoRealizado(id);
                         navigation.navigate('ProgresoPedido');
@@ -143,7 +144,9 @@ const ResumenPedido = (_) => {
                         </Button>
                     </View>
                 </View>
+
             </ScrollView>
+            <BotonComprar />
         </>
     );
 }

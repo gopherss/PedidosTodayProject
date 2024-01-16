@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,13 +17,13 @@ const ProductoItem = ({ producto }) => {
     return (
         <View style={styles.listado}>
             <View style={styles.listadoItem} key={_id}>
-                
+
                 <Avatar
                     style={styles.item}
                     source={{ uri: url }}
-                    onPress={_ => {
+                    onPress={async _ => {
                         const { disponible, ...platillo2 } = producto;
-                        seleccionarPlatillo(platillo2);
+                        await seleccionarPlatillo(platillo2);
                         navigation.navigate('DetallePlatillo')
                     }}
                 />
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ProductoItem;
+export default memo(ProductoItem);

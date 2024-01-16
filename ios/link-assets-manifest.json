@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Kameron-Bold.ttf",
+      "sha1": "c88448abe329a9b5e06ccd9e2d3c48181ea5d11a"
+    },
+    {
+      "path": "assets/fonts/Kameron-Medium.ttf",
+      "sha1": "eeecad337a4990e301db44a93621a183dd11a9d3"
+    },
+    {
+      "path": "assets/fonts/Kameron-Regular.ttf",
+      "sha1": "93b8001b11cbc8fe9bddfbb9d171cf2ae7f5eb19"
+    },
+    {
+      "path": "assets/fonts/Pacifico-Regular.ttf",
+      "sha1": "baca1fca7fe74b61cb33aa0da48ec1a3a77bcf49"
+    }
+  ]
+}
